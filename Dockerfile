@@ -28,7 +28,7 @@ RUN cd $HOME && \
 RUN cd $HOME && \
     wget https://github.com/arq5x/bedtools2/archive/v2.26.0.tar.gz && \
     tar xzvf v2.26.0.tar.gz && \
-    rm v2.26.0.tar.gz \
+    rm v2.26.0.tar.gz && \
     cd bedtools2-2.26.0 && \
     make && \
     make install
@@ -44,5 +44,10 @@ RUN cd $HOME && \
 RUN cd $HOME/TECtool && \
     wget http://tectool.unibas.ch/data/test_data.tar.gz && \
     tar xzvf test_data.tar.gz && \
-    rm test_data.tar.gz \   
+    rm test_data.tar.gz && \   
     cd test_data
+
+# install R
+FROM r-base
+
+RUN Rscript -e 'source("https://bioconductor.org/biocLite.R"); install.packages("Gviz")'
