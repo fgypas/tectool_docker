@@ -16,6 +16,7 @@ RUN apt-get install -y r-base && \
 RUN apt-get install -y build-essential python3 python3-dev python3-pip && \
     python3 -m pip install pip --upgrade && \
     python3 -m pip install wheel && \
+    unlink /usr/bin/python && \
     ln -s /usr/bin/python3 /usr/bin/python
 
 # fix vim
